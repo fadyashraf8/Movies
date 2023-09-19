@@ -1,0 +1,19 @@
+.active{
+    color: tomato !important;
+    font-weight: 800 ;
+}
+body{
+    background-color: #343a40;
+}
+.nav-link{
+    color: white;
+}
+.navbar-brand{
+    color: white !important;
+}
+.navbar-brand:hover{
+    color: tomato;
+}
+.nav-link:hover{
+    color: tomato;
+}
