@@ -96,8 +96,8 @@ export default function Movies() {
 
 
       <nav aria-label="..." className='mt-4 d-flex justify-content-center'>
-        <ul class="pagination pagination-sm">
-          {pageNumbers.map((el) => <li class="page-item"><a class="page-link" onClick={() => changePageNumber(el)}>{el}</a></li>)}
+        <ul className="pagination pagination-sm">
+          {pageNumbers.map((el,index) => <li key={index} className="page-item"><a className="page-link" onClick={() => changePageNumber(el)}>{el}</a></li>)}
         </ul>
       </nav>
     </>

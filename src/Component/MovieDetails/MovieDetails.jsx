@@ -35,7 +35,7 @@ export default function MovieDetails() {
                             <br />
                             <p className='mt-3 btn btn-info btn-lg bg-transparent text-white'>{MovieDetails.tagline}</p>
                             <br />
-                            {MovieDetails.genres.map((e) => <button className='btn btn-info btn-sm mx-2 mt-2'>{e.name}</button>)}
+                            {MovieDetails.genres.map((e,index) => <button key={index} className='btn btn-info btn-sm mx-2 mt-2'>{e.name}</button>)}
                             <br />
                             <p className='mt-3 btn btn-info btn-lg bg-transparent text-white'>Vote : {MovieDetails.vote_average}</p>
                             <br />

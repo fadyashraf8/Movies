@@ -35,7 +35,7 @@ export default function Home() {
             to watch now
           </h2>
         </div>
-        {movieList.map((movie) => <div className='col-md-2' >
+        {movieList.map((movie,index) => <div key={index} className='col-md-2' >
           <Link to={"/moviedetails/" + movie.id}>
             <div className='item position-relative'>
 
@@ -57,7 +57,7 @@ export default function Home() {
             to watch now
           </h2>
         </div>
-        {tvList.map((tv) => <div className='col-md-2' >
+        {tvList.map((tv,index) => <div key={index} className='col-md-2' >
 
           <Link to={"/tvdetails/" + tv.id}>
 
@@ -81,7 +81,7 @@ export default function Home() {
             to watch now
           </h2>
         </div>
-        {peopleList.map((people) => <div className='col-md-2' >
+        {peopleList.map((people,index) => <div key={index} className='col-md-2' >
           <Link to={"/persondetails/" + people.id}>
             <div className='item position-relative'>
 

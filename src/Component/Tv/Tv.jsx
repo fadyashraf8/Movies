@@ -67,7 +67,7 @@ export default function Tv() {
           <div className='row g-4'>
             <p className='fs-3 bg-dark rounded-5'>{currentCategory}</p>
 
-            {tvs.map((tv) => <div className='col-md-4'>
+            {tvs.map((tv,index) => <div key={index} className='col-md-4'>
 
               <Link to={"/tvdetails/" + tv.id}>
                 {tv.backdrop_path == null ? <img src={sora} alt="" id='image' /> : <img src={"https://image.tmdb.org/t/p/w500" + tv.backdrop_path} alt="" className='w-100' />}
@@ -81,8 +81,8 @@ export default function Tv() {
 
 
       <nav aria-label="..." className='mt-4 d-flex justify-content-center'>
-        <ul class="pagination pagination-sm">
-          {pageNumbers.map((el) => <li class="page-item"><a class="page-link" onClick={() => changePageNumber(el)}>{el}</a></li>)}
+        <ul className="pagination pagination-sm">
+          {pageNumbers.map((el,index) => <li key={index} className="page-item"><a className="page-link" onClick={() => changePageNumber(el)}>{el}</a></li>)}
         </ul>
       </nav>
     </>

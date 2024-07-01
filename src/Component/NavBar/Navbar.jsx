@@ -20,7 +20,7 @@ export default function Navbar(props) {
 
                         {user != null ? <ul className="navbar-nav  ">
                             <li className="nav-item">
-                                <NavLink className={({ isActive }) => isActive ? "nav-link active mx-2" : "nav-link mx-2"} aria-current="page" to='home'>Home</NavLink>
+                                <NavLink className={({ isActive }) => isActive ? "nav-link active mx-2" : "nav-link mx-2"} aria-current="page" to='/'>Home</NavLink>
                             </li>
                         
                             <li className="nav-item">

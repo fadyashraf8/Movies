@@ -64,8 +64,8 @@ function App() {
     {path: '/', element: <MasterLayout user={user} logOut={logOut} />,
      children: [
         { path: '/', element: <ProtectedRouter><Home/></ProtectedRouter>  },
-        { path: 'Movies-Website', element: <ProtectedRouter><Home/></ProtectedRouter>  },
-        { path: 'home', element: <ProtectedRouter><Home/></ProtectedRouter> },
+
+
         { path: 'movies', element: <ProtectedRouter><Movies/></ProtectedRouter> },
         { path: 'people', element: <ProtectedRouter><People/></ProtectedRouter> },
         { path: 'tv', element: <ProtectedRouter><Tv/></ProtectedRouter> },

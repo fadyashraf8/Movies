@@ -32,7 +32,7 @@ export default function Login(props) {
     if (valid.error === undefined) {
       setLoading(true)
       await axios.post('https://signup-signin-backend.vercel.app/user/signin', user).then((data) => {
-        navigate('/home')
+        navigate('/')
         localStorage.setItem("token", data.data.token)
         saveUser()
         setLoading(false)

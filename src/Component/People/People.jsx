@@ -50,7 +50,7 @@ export default function People() {
         </div>
         <div className='col-md-12 mt-3'>
           <div className='row'>
-            {peopleList.map((people) => <div className='col-md-2'>
+            {peopleList.map((people,index) => <div key={index} className='col-md-2'>
               <Link to={"/persondetails/" + people.id}>
                 {people.profile_path == null ? <img src={sora} alt="" id='image' /> : <img src={"https://image.tmdb.org/t/p/w500" + people.profile_path} alt="" className='w-100' />}
                 <h3 className='text-white h4 mt-1'>{people.name}</h3>
@@ -63,8 +63,8 @@ export default function People() {
       </div>
 
       <nav aria-label="..." className='mt-4 d-flex justify-content-center'>
-        <ul class="pagination pagination-sm">
-          {pageNumbers.map((el) => <li class="page-item"><a class="page-link" onClick={() => changePageNumber(el)}>{el}</a></li>)}
+        <ul className="pagination pagination-sm">
+          {pageNumbers.map((el,index) => <li key={index} className="page-item"><a className="page-link" onClick={() => changePageNumber(el)}>{el}</a></li>)}
         </ul>
       </nav>
     </>
