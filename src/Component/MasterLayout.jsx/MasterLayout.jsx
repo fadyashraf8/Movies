@@ -4,13 +4,13 @@ import Navbar from '../NavBar/Navbar'
 
 export default function MasterLayout(props) {
 
-let{user ,logOut}=props
+    let { user, logOut } = props
 
 
 
     return (
         <div>
-            <Navbar user={user} logOut={logOut}/>
+            <Navbar user={user} logOut={logOut} />
             <div className='container'>
                 <Outlet />
             </div>
