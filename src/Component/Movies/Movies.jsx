@@ -8,29 +8,23 @@ import { Link } from 'react-router-dom';
 export default function Movies() {
 
 
+  let pNumberMov = localStorage.getItem("pageNumberMov") || 1;
+  let pTypeMov = localStorage.getItem("pageTypeMov") || "popular";
+
   let [movies, setMovies] = useState([])
-  let [currentCategory, setCurrentCategory] = useState("")
+  let [currentCategory, setCurrentCategory] = useState(pTypeMov)
   let pageNumbers = new Array(10).fill("1").map((el, i) => i + 1)
-  let pNumberMov = localStorage.getItem("pageNumberMov")
-  let pTypeMov = localStorage.getItem("pageTypeMov")
 
-  if (pNumberMov == null || pTypeMov == null) {
-    getMovies(1, "popular")
-
-  } else {
-    getMovies(pNumberMov, pTypeMov)
-  }
   async function getMovies(pageNum = pNumberMov, type = pTypeMov) {
     let { data } = await axios.get(`https://api.themoviedb.org/3/movie/${type}?api_key=08ae5681ea424910b451fad865b0825c&language=en-US&page=${pageNum}`)
     setMovies(data.results)
   }
 
-
   function changePageNumber(pageNum) {
     getMovies(pageNum, currentCategory)
     localStorage.setItem("pageNumberMov", pageNum)
-
   }
+
   function changeCategory(e) {
     let type = e.target.id
     setCurrentCategory(type)
@@ -51,9 +45,9 @@ export default function Movies() {
     }
   }
 
-
   useEffect(() => {
     getMovies()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   return (
     <>
@@ -97,7 +91,7 @@ export default function Movies() {
 
       <nav aria-label="..." className='mt-4 d-flex justify-content-center'>
         <ul className="pagination pagination-sm">
-          {pageNumbers.map((el,index) => <li key={index} className="page-item"><a className="page-link" onClick={() => changePageNumber(el)}>{el}</a></li>)}
+          {pageNumbers.map((el,index) => <li key={index} className="page-item"><a href="#!" className="page-link" onClick={(e) => { e.preventDefault(); changePageNumber(el); }}>{el}</a></li>)}
         </ul>
       </nav>
     </>

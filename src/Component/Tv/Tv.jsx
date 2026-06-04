@@ -5,23 +5,18 @@ import sora from "../../imgs/download.png"
 
 
 export default function Tv() {
+  let pageNumberTv = localStorage.getItem("pageNumberTv") || 1;
+  let pageTypeTv = localStorage.getItem("pageTypeTv") || "popular";
 
   let [tvs, setTv] = useState([])
-  let [currentCategory, setCurrentCategory] = useState("")
+  let [currentCategory, setCurrentCategory] = useState(pageTypeTv)
 
   let pageNumbers = new Array(10).fill("1").map((el, i) => i + 1)
-  let pageNumberTv = localStorage.getItem("pageNumberTv")
-  let pageTypeTv = localStorage.getItem("pageTypeTv")
 
   useEffect(() => {
     getTv()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-
-  if (pageNumberTv == null || pageTypeTv == null) {
-    getTv(1, "popular")
-  } else {
-    getTv(pageNumberTv, pageTypeTv)
-  }
 
   async function getTv(page = pageNumberTv, type = pageTypeTv) {
     let { data } = await axios.get(`https://api.themoviedb.org/3/tv/${type}?api_key=08ae5681ea424910b451fad865b0825c&page=${page}`)
@@ -82,7 +77,7 @@ export default function Tv() {
 
       <nav aria-label="..." className='mt-4 d-flex justify-content-center'>
         <ul className="pagination pagination-sm">
-          {pageNumbers.map((el,index) => <li key={index} className="page-item"><a className="page-link" onClick={() => changePageNumber(el)}>{el}</a></li>)}
+          {pageNumbers.map((el,index) => <li key={index} className="page-item"><a href="#!" className="page-link" onClick={(e) => { e.preventDefault(); changePageNumber(el); }}>{el}</a></li>)}
         </ul>
       </nav>
     </>

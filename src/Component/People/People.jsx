@@ -10,11 +10,12 @@ export default function People() {
 
   let [peopleList, setPeopleList] = useState([])
   let pageNumbers = new Array(10).fill("1").map((el, i) => i + 1)
-  let pNumberPerson=localStorage.getItem("pageNumberPerson")
+  let pNumberPerson = localStorage.getItem("pageNumberPerson") || 1;
 
 
   useEffect(() => {
     getPeople()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
 
@@ -64,7 +65,7 @@ export default function People() {
 
       <nav aria-label="..." className='mt-4 d-flex justify-content-center'>
         <ul className="pagination pagination-sm">
-          {pageNumbers.map((el,index) => <li key={index} className="page-item"><a className="page-link" onClick={() => changePageNumber(el)}>{el}</a></li>)}
+          {pageNumbers.map((el,index) => <li key={index} className="page-item"><a href="#!" className="page-link" onClick={(e) => { e.preventDefault(); changePageNumber(el); }}>{el}</a></li>)}
         </ul>
       </nav>
     </>
